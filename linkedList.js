@@ -1,3 +1,4 @@
+// node
 const createNode = (value) => {
   return {
     value,
@@ -5,6 +6,7 @@ const createNode = (value) => {
   };
 };
 
+// linked list
 const createLinkedList = () => {
   return {
     head: null,
