@@ -12,6 +12,7 @@ const createLinkedList = () => {
     head: null,
     tail: null,
     length: 0,
+    isEmpty: this.length === 0,
     push: (value) => {
       const newNode = createNode(value);
 
@@ -28,7 +29,7 @@ const createLinkedList = () => {
       return newNode;
     },
     pop: () => {
-      if (this.isEmpty()) return null;
+      if (this.isEmpty) return null;
 
       const lastNode = this.tail;
       if (this.head === this.tail) {
@@ -54,8 +55,23 @@ const createLinkedList = () => {
 
       return lastNode;
     },
-    isEmpty: () => {
-      return this.length === 0;
+    getLastNode: () => {
+      if (this.isEmpty) return null;
+
+      return this.tail;
     },
   };
 };
+
+// testing
+const linkedList = createLinkedList();
+linkedList.push(1);
+linkedList.push(2);
+linkedList.push(3);
+
+console.log(linkedList.pop()); // 3
+console.log(linkedList.getLastNode()); // 2
+console.log(linkedList.pop()); // 2
+console.log(linkedList.getLastNode()); // 1
+console.log(linkedList.pop()); // 1
+console.log(linkedList.getLastNode()); // null
