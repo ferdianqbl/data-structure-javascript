@@ -20,7 +20,7 @@ const createLinkedList = () => {
         this.tail = newNode;
         this.length++;
       } else {
-        this.tail.node = newNode;
+        this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
       }
