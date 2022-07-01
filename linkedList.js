@@ -31,7 +31,6 @@ const createLinkedList = () => {
       if (this.isEmpty()) return null;
 
       const lastNode = this.tail;
-
       if (this.head === this.tail) {
         this.head = null;
         this.tail = null;
