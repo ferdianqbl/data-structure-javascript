@@ -92,11 +92,14 @@ const createLinkedList = () => {
     },
 
     print: () => {
+      const values = [];
       let curr = this.head;
       while (curr) {
-        console.log(curr.value);
+        values.push(curr.value);
         curr = curr.next;
       }
+
+      return values.join(" => ");
     },
   };
 };
