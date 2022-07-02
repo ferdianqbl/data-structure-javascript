@@ -41,14 +41,8 @@ const createLinkedList = () => {
 
       let curr = this.head;
       let temp;
-      while (curr) {
-        if (curr.next === this.tail) {
-          temp = curr;
-          break;
-        }
-        curr = curr.next;
-      }
-
+      while (curr && curr.next !== this.tail) curr = curr.next;
+      temp = curr;
       temp.next = null;
       this.tail = temp;
       this.length--;
@@ -59,6 +53,50 @@ const createLinkedList = () => {
       if (this.isEmpty) return null;
 
       return this.tail;
+    },
+
+    get: (index) => {
+      if (index < 0 || index > this.length) return null;
+
+      if (index === 0) return this.head;
+
+      let curr = this.head;
+      while (index--) {
+        curr = curr.next;
+      }
+      return curr;
+    },
+
+    delete: (index) => {
+      if (index < 0 || index > this.length) return null;
+
+      if (index === 0) {
+        const getVal = this.head;
+        this.head = this.head.next;
+        this.length--;
+        return getVal;
+      }
+
+      let curr = this.head;
+      let prev = curr;
+      while (index--) {
+        curr = curr.next;
+        prev = curr;
+      }
+
+      let getVal = curr;
+      prev.next = curr.next;
+      this.length--;
+
+      return getVal;
+    },
+
+    print: () => {
+      let curr = this.head;
+      while (curr) {
+        console.log(curr.value);
+        curr = curr.next;
+      }
     },
   };
 };
